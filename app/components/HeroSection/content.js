@@ -12,6 +12,7 @@ const urbanist = Urbanist({
 
 const Content = () => {
   return (
+    
     <div className="relative w-full max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto flex flex-col items-center gap-12 z-10">
       <h1
         className={`${urbanist.className} text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-semibold text-center bg-clip-text text-transparent`}

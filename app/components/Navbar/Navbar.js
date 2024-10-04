@@ -12,18 +12,17 @@ const Navbar = () => {
   return (
     <nav className="w-full bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex-shrink-0 flex items-center" >
-            <img src="/assests/logo.png" alt="Logo" className="h-10 w-10" />
-
-            <span className="ml-2 text-xl font-bold text-gray-700">Memoria</span> 
-          </div> 
+  <div className="flex justify-between h-16">
+    <div className="flex items-center">
+      <img src="/assests/Unify.png" alt="Logo" className="h-28 w-28" /> {/* Increased size */}
+    </div>
+ 
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
             <SignedOut>
               <Link href="/sign-in" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">
                 Login
               </Link>
-              <Link href="/sign-up" className="ml-3 px-4 py-2 rounded-md text-sm font-medium text-white bg-gray-600 hover:bg-gray-700">
+              <Link href="/sign-up" className="ml-3 px-4 py-2 rounded-md text-sm font-medium text-white bg-blue-800 hover:bg-blue-600">
                 Sign Up
               </Link>
             </SignedOut>
