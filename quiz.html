@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Quiz</title>
+    <link rel="stylesheet" href="quizstyle.css">
+</head>
+
+<body>
+    <!-- Overlay to improve contrast -->
+    <div class="overlay"></div>
+
+    <!-- Background particle elements -->
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+
+    <!-- Quiz Container -->
+    <div class="quiz-container">
+        <h1 class="quiz-heading">Sign Language Quiz</h1>
+        <h2 id="question">Loading...</h2>
+        <div id="answer-buttons" class="btn-container">
+            <!-- Options will be dynamically created here -->
+        </div>
+        <div id="feedback" class="feedback">
+            <!-- Correct or incorrect feedback will be shown here -->
+        </div>
+        <button id="next-button" class="next-btn">Next</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="quizscript.js"></script>
+</body>
+
+</html>
