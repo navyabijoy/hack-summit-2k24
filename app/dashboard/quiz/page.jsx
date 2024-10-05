@@ -1,41 +1,51 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const questions = [
-    {"question": "What is the sign for 'Thank You'?", "options": ["A hand to the chin, then outward", "Thumbs-up", "Waving both hands"], "correct": 0},
-    {"question": "Which sign represents 'Yes'?", "options": ["A fist nodding up and down", "An open hand waving", "A finger touching the palm"], "correct": 0},
-    {"question": "What does the sign for 'Hello' look like?", "options": ["Waving one hand", "Two hands making a heart shape", "Both hands on cheeks"], "correct": 0},
-    {"question": "Which sign is used for 'No'?", "options": ["Thumb and index finger touching", "Shaking the head", "A fist with pinky and thumb extended"], "correct": 1},
-    {"question": "How do you sign 'I Love You'?", "options": ["Thumbs-up", "Hand forming a fist with pinky, thumb, and index finger extended", "Waving both hands"], "correct": 1},
-    {"question": "What is the sign for 'Sorry'?", "options": ["Rubbing the chest with a closed fist", "Shaking hands", "Pointing at oneself"], "correct": 0},
-    {"question": "How do you sign 'Help'?", "options": ["Raising a fist", "Thumbs-up placed on an open palm", "Waving one hand in the air"], "correct": 1},
-    {"question": "Which of these represents 'Friend'?", "options": ["Linking index fingers together", "High five", "Crossing arms over chest"], "correct": 0},
-    {"question": "What is the sign for 'Please'?", "options": ["Rubbing an open palm on the chest", "Waving both hands", "Tapping the forehead"], "correct": 0},
-    {"question": "How do you sign 'Good Morning'?", "options": ["Hand rising from chin to forehead", "Waving hand from chin outward", "Hand rising from chin with an open palm"], "correct": 2},
-    {"question": "How do you sign 'Good Night'?", "options": ["Hands meet at chest level, then drop", "Hand waves at chest level", "Hands form a cross, then tap the chest"], "correct": 0},
-    {"question": "What is the sign for 'Family'?", "options": ["Both hands make a circle", "Index fingers linking", "Both hands touching the heart"], "correct": 0},
-    {"question": "How do you sign 'Excuse Me'?", "options": ["Hand brushes across the chest", "Thumb touching the palm", "Flat hand brushes fingertips against palm"], "correct": 2},
-    {"question": "How do you say 'Name' in sign language?", "options": ["Tap two fingers on each other", "Thumb up", "Rubbing the chin"], "correct": 0},
-    {"question": "How do you say 'Eat' in sign language?", "options": ["Tapping fingers to the mouth", "Two hands forming a circle", "Hand at chin level waving outward"], "correct": 0}
-  ];
+  { question: "1. What is the sign for 'Thank You'?", options: ["A hand to the chin, then outward", "Thumbs-up", "Waving both hands"], correct: 0, difficulty: 'easy' },
+  { question: "2. Which sign represents 'Yes'?", options: ["A fist nodding up and down", "An open hand waving", "A finger touching the palm"], correct: 0, difficulty: 'easy' },
+  { question: "3. What does the sign for 'Hello' look like?", options: ["Waving one hand", "Two hands making a heart shape", "Both hands on cheeks"], correct: 0, difficulty: 'easy' },
+  { question: "4. Which sign is used for 'No'?", options: ["Thumb and index finger touching", "Shaking the head", "A fist with pinky and thumb extended"], correct: 1, difficulty: 'easy' },
+  { question: "5. What is the sign for 'Please'?", options: ["Open hand on the chest moving in circles", "Pointing at the nose", "Both hands forming a cup"], correct: 0, difficulty: 'easy' },
+  { question: "6. How do you sign 'Goodbye'?", options: ["Waving your open hand", "Thumb and pinky extended", "Nodding head down"], correct: 0, difficulty: 'easy' },
+  { question: "7. What is the sign for 'Sorry'?", options: ["Rubbing the chest with a closed fist", "Shaking hands", "Pointing at oneself"], correct: 0, difficulty: 'medium' },
+  { question: "8. How do you sign 'I Love You'?", options: ["Thumbs-up", "Hand forming a fist with pinky, thumb, and index finger extended", "Waving both hands"], correct: 1, difficulty: 'medium' },
+  { question: "9. What is the sign for 'Help'?", options: ["A fist placed on an open palm", "Both hands moving upward", "Tapping the head with an open hand"], correct: 0, difficulty: 'medium' },
+  { question: "10. Which sign represents 'Friend'?", options: ["Hooking the index fingers together", "Making a fist", "Pointing to both shoulders"], correct: 0, difficulty: 'medium' },
+  { question: "11. How do you sign 'House'?", options: ["Hands forming a roof shape", "Pointing at a building", "Hands forming a square"], correct: 0, difficulty: 'medium' },
+  { question: "12. What is the sign for 'Mother'?", options: ["Open hand with thumb touching chin", "A fist near the forehead", "A hand on the heart"], correct: 0, difficulty: 'medium' },
+  { question: "13. What is the sign for 'Family'?", options: ["Making a circle with both hands", "Touching the forehead", "Crossing both arms over chest"], correct: 0, difficulty: 'hard' },
+  { question: "14. How do you sign 'School'?", options: ["Clapping both hands together", "Waving with both hands", "Pointing at a book"], correct: 0, difficulty: 'hard' },
+  { question: "15. What does the sign for 'Brother' look like?", options: ["One hand on the forehead, then both hands pointing outward", "Hands forming a roof", "Thumbs-up from both hands"], correct: 0, difficulty: 'hard' },
+  { question: "16. How do you sign 'Water'?", options: ["Tapping the chin with a 'W' handshape", "Rubbing the chest", "Fingers spread out"], correct: 0, difficulty: 'hard' },
+  { question: "17. What is the sign for 'Want'?", options: ["Hands reaching out and pulling towards you", "A fist nodding up and down", "Hands forming a circle"], correct: 0, difficulty: 'hard' },
+  { question: "18. How do you sign 'Time'?", options: ["Tapping the wrist", "Pointing to the sky", "Rubbing the stomach"], correct: 0, difficulty: 'hard' },
+  { question: "19. What does the sign for 'Understand' look like?", options: ["Index finger flicking up near the head", "Thumbs-up", "Waving both hands"], correct: 0, difficulty: 'hard' },
+];
 
 const SignLanguageQuiz = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [feedback, setFeedback] = useState({ message: '', isCorrect: null });
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const [score, setScore] = useState(0);
+
+  const currentQuestion = questions[currentQuestionIndex];
 
   const selectAnswer = (selectedIndex) => {
-    const currentQuestion = questions[currentQuestionIndex];
     if (selectedIndex === currentQuestion.correct) {
-      setFeedback({ message: "Correct!", isCorrect: true });
+      setFeedback({ message: 'Correct!', isCorrect: true });
     } else {
-      setFeedback({ message: "Incorrect! Try again.", isCorrect: false });
+      setFeedback({ message: 'Incorrect! Try again.', isCorrect: false });
     }
   };
 
   const nextQuestion = () => {
-    if (currentQuestionIndex < questions.length - 1) {
+    if (feedback.isCorrect) {
+      setScore(score + 1);
+    }
+
+    if (currentQuestionIndex + 1 < questions.length) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setFeedback({ message: '', isCorrect: null });
     } else {
@@ -45,29 +55,29 @@ const SignLanguageQuiz = () => {
 
   if (quizCompleted) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-[#ff6f61] via-[#ffbc42] to-[#0b7285]">
+      <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
         <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-          <h1 className="text-3xl font-bold mb-4">15 Questions Completed!</h1>
-          <p className="text-xl">Great job! You have successfully completed the quiz. Keep up the amazing work!</p>
+          <h1 className="text-3xl font-bold mb-4">Quiz Completed!</h1>
+          <p className="text-xl">Great job! You have completed the quiz with a score of {score} out of {questions.length}.</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-[#ff6f61] via-[#ffbc42] to-[#0b7285] overflow-hidden">
-      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-      <div className="relative z-10 bg-white p-8 rounded-lg shadow-lg text-center w-full max-w-md transform hover:scale-105 transition-transform duration-300">
-        <h1 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#ff6f61] via-[#ffbc42] to-[#0b7285]">
-          Sign Language Quiz
-        </h1>
-        {questions.length > 0 && (
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="relative z-10 bg-white p-10 rounded-lg shadow-lg text-center w-full max-w-2xl">
+        {currentQuestion && (
           <>
+            <h1 className="text-3xl font-bold mb-6">Sign Language Quiz</h1>
             <h2 className="text-xl mb-4">
-              Question {currentQuestionIndex + 1}: {questions[currentQuestionIndex].question}
+              Difficulty Level: <span className="font-bold">{currentQuestion.difficulty}</span>
+            </h2>
+            <h2 className="text-xl mb-4">
+              Question: {currentQuestion.question}
             </h2>
             <div className="space-y-2">
-              {questions[currentQuestionIndex].options.map((option, index) => (
+              {currentQuestion.options.map((option, index) => (
                 <button
                   key={index}
                   onClick={() => selectAnswer(index)}
@@ -78,7 +88,7 @@ const SignLanguageQuiz = () => {
               ))}
             </div>
             {feedback.message && (
-              <div className={`mt-4 flex items-center justify-center ${feedback.isCorrect ? 'text-green-500' : 'text-red-500'}`}>
+              <div className={`mt-4 ${feedback.isCorrect ? 'text-green-500' : 'text-red-500'}`}>
                 {feedback.isCorrect ? '✅' : '❌'} {feedback.message}
               </div>
             )}
@@ -93,33 +103,6 @@ const SignLanguageQuiz = () => {
           </>
         )}
       </div>
-      {[1, 2, 3].map((i) => (
-        <div
-          key={i}
-          className="absolute rounded-full bg-white bg-opacity-30"
-          style={{
-            width: `${10 + i * 5}px`,
-            height: `${10 + i * 5}px`,
-            top: `${10 + i * 30}%`,
-            left: `${15 + i * 25}%`,
-            animation: `float-${i} ${4 + i * 2}s infinite ease-in-out alternate`,
-          }}
-        ></div>
-      ))}
-      <style jsx>{`
-        @keyframes float-1 {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-20px); }
-        }
-        @keyframes float-2 {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-30px); }
-        }
-        @keyframes float-3 {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-40px); }
-        }
-      `}</style>
     </div>
   );
 };
