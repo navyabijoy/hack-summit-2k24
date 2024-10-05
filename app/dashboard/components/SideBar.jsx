@@ -8,6 +8,7 @@ import { HiOutlineBookOpen } from "react-icons/hi2";
 import { HiOutlineSquare3Stack3D } from "react-icons/hi2";
 import { HiOutlinePlay } from "react-icons/hi2";
 import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
+import { HiOutlineTranslate } from "react-icons/hi";
 import { HiMiniArrowLeftStartOnRectangle } from "react-icons/hi2";
 import { usePathname } from 'next/navigation';
 
@@ -53,6 +54,13 @@ function SideBar() {
         },
         {
             id:6,
+            name:'Dictionary',
+            icon:<HiOutlineTranslate />,
+            path:'/dashboard/dictionary'
+
+        },
+        {
+            id:7,
             name:'Logout',
             icon:<HiMiniArrowLeftStartOnRectangle />,
             path:'/dashboard/community'
@@ -63,7 +71,7 @@ function SideBar() {
     const path=usePathname()
     return (
         <div className="fixed h-full md:w-64 p-5 shadow-md"> 
-            <Image src={'/assests/Unify.png'} width={160} height={100} />
+            <Image src={'/assests/full-unify.png'} width={160} height={100} />
             <hr className='my-5' />
 
             <ul>

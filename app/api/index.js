@@ -1,16 +1,20 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+
 dotenv.config();
 
-mongoose.connect(process.env.MONGODB_URI).then(() =>{
-    console.log('connected to MongoDB');
-}).catch((err)=>{
-    console.log(err);
-});
+mongoose.connect('mongodb+srv://navyabijoy14:navyabijoy14@unify.veaed.mongodb.net/unify-hacksummit?retryWrites=true&w=majority&appName=unify')
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((err) => {
+    console.error('MongoDB connection error:', err);
+  });
 
 const app = express();
 
-app.listen(3000, () =>{
-    console.log('Server is running on port 3000')
-})
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});

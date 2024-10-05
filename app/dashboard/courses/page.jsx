@@ -135,7 +135,7 @@ const SignLanguageCourses = () => {
 
   return (
     <div className="container">
-      <h1>Sign Language Courses</h1>
+      <h1 className='text-2xl'>Sign Language Courses</h1>
 
       <div className="search-filter-container">
         <input

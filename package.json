@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node api/index.js",
+    "start": "node app/api/index.js",
     "lint": "next lint"
   },
   "dependencies": {
@@ -15,10 +15,12 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.2",
     "@mui/material": "^6.1.2",
+    "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "mongodb": "^6.9.0",
     "mongoose": "^8.7.0",
     "next": "14.2.14",
+    "nodemon": "^3.1.7",
     "react": "^18",
     "react-camera-pro": "^1.4.0",
     "react-dom": "^18",
