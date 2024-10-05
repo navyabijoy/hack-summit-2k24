@@ -12,31 +12,36 @@ const SignLanguageCourses = () => {
         title: 'ASL Basics',
         description: 'Learn ASL basics with Bill Vicars',
         duration: '1 hour',
-        url: 'https://www.youtube.com/watch?v=DBQINq0SsAw'
+        url: 'https://www.youtube.com/watch?v=DBQINq0SsAw',
+        thumbnailUrl: 'https://img.youtube.com/vi/DBQINq0SsAw/hqdefault.jpg'
       },
       {
         title: 'ASL Beginner Course',
         description: 'Comprehensive ASL beginner lesson',
         duration: '34 minutes',
-        url: 'https://www.youtube.com/watch?v=Y4stD_ypaAI'
+        url: 'https://www.youtube.com/watch?v=Y4stD_ypaAI',
+        thumbnailUrl: 'https://img.youtube.com/vi/Y4stD_ypaAI/hqdefault.jpg'
       },
       {
         title: 'ASL Numbers & Alphabet',
         description: 'Master numbers and alphabet in ASL',
         duration: '10 minutes',
-        url: 'https://www.youtube.com/watch?v=_c--P6VRTUo'
+        url: 'https://www.youtube.com/watch?v=_c--P6VRTUo',
+        thumbnailUrl: 'https://img.youtube.com/vi/_c--P6VRTUo/hqdefault.jpg'
       },
       {
         title: 'Basic ASL Phrases',
         description: 'Learn essential ASL phrases',
         duration: '15 minutes',
-        url: 'https://www.youtube.com/watch?v=v1desDduz5M'
+        url: 'https://www.youtube.com/watch?v=v1desDduz5M',
+        thumbnailUrl: 'https://img.youtube.com/vi/v1desDduz5M/hqdefault.jpg'
       },
       {
         title: 'ASL Common Words',
         description: 'Learn common everyday words in ASL',
         duration: '10 minutes',
-        url: 'https://www.youtube.com/watch?v=0M_33EKcPGE'
+        url: 'https://www.youtube.com/watch?v=0M_33EKcPGE',
+        thumbnailUrl: 'https://img.youtube.com/vi/0M_33EKcPGE/hqdefault.jpg'
       }
     ],
     intermediate: [
@@ -44,25 +49,33 @@ const SignLanguageCourses = () => {
         title: 'ASL Sentence Structure',
         description: 'Learn how to form complete sentences in ASL',
         duration: '8 minutes',
-        url: 'https://www.youtube.com/watch?v=fDV9Al8Fgjk'
+        url: 'https://www.youtube.com/watch?v=fDV9Al8Fgjk',
+        thumbnailUrl: 'https://img.youtube.com/vi/fDV9Al8Fgjk/hqdefault.jpg'
+
       },
       {
         title: 'Time Signs in ASL',
         description: 'Learn how to express time concepts in ASL',
         duration: '10 minutes',
-        url: 'https://www.youtube.com/watch?v=91foGHKuwL0'
+        url: 'https://www.youtube.com/watch?v=91foGHKuwL0',
+        thumbnailUrl: 'https://img.youtube.com/vi/91foGHKuwL0/hqdefault.jpg'
+
       },
       {
         title: 'ASL Question Words',
         description: 'Master question words and phrases in ASL',
         duration: '5 minutes',
-        url: 'https://www.youtube.com/watch?v=KHM-mgFuisA'
+        url: 'https://www.youtube.com/watch?v=KHM-mgFuisA',
+        thumbnailUrl: 'https://img.youtube.com/vi/KHM-mgFuisA/hqdefault.jpg'
+
       },
       {
         title: 'ASL Conversation Practice',
         description: 'Practice conversational skills in ASL',
         duration: '12 minutes',
-        url: 'https://www.youtube.com/watch?v=BopX7gr1BJ8'
+        url: 'https://www.youtube.com/watch?v=BopX7gr1BJ8',
+        thumbnailUrl: 'https://img.youtube.com/vi/BopX7gr1BJ8/hqdefault.jpg'
+
       }
     ],
     advanced: [
@@ -70,25 +83,33 @@ const SignLanguageCourses = () => {
         title: 'ASL Medical Terms',
         description: 'Learn advanced medical terminology in ASL',
         duration: '7 minutes',
-        url: 'https://www.youtube.com/watch?v=gqFjJwiWoIA'
+        url: 'https://www.youtube.com/watch?v=gqFjJwiWoIA',
+        thumbnailUrl: 'https://img.youtube.com/vi/gqFjJwiWoIA/hqdefault.jpg'
+
       },
-      {
-        title: 'Technical Terms in ASL',
-        description: 'Master technical and specialized vocabulary',
-        duration: 'Varied',
-        url: 'https://www.youtube.com/results?search_query=technical+terms+sign+language'
-      },
+    //   {
+    //     title: 'Technical Terms in ASL',
+    //     description: 'Master technical and specialized vocabulary',
+    //     duration: 'Varied',
+    //     url: 'https://youtu.be/qa9qSPsj840?si=F4PKeuYZLGlrB7qj',
+    //     thumbnailUrl: 'https://img.youtube.com/vi/VIDEO_ID/hqdefault.jpg'
+
+    //   },
       {
         title: 'ASL Advanced Concepts',
         description: 'Advanced communication techniques in ASL',
         duration: '15 minutes',
-        url: 'https://www.youtube.com/watch?v=C84gs5KeaRU'
+        url: 'https://www.youtube.com/watch?v=C84gs5KeaRU',
+        thumbnailUrl: 'https://img.youtube.com/vi/C84gs5KeaRU/hqdefault.jpg'
+
       },
       {
         title: 'Complex ASL Numbers',
         description: 'Advanced number concepts in ASL',
         duration: '10 minutes',
-        url: 'https://www.youtube.com/watch?v=_c--P6VRTUo'
+        url: 'https://www.youtube.com/watch?v=_c--P6VRTUo',
+        thumbnailUrl: 'https://img.youtube.com/vi/_c--P6VRTUo/hqdefault.jpg'
+
       }
     ]
   };
@@ -104,6 +125,7 @@ const SignLanguageCourses = () => {
 
   const CourseCard = ({ course }) => (
     <div className="course-card">
+      <img src={course.thumbnailUrl} alt="YouTube Video Thumbnail" />
       <h2 className="course-title">{course.title}</h2>
       <p className="course-description">{course.description}</p>
       <p className="course-duration">Duration: {course.duration}</p>
@@ -179,7 +201,7 @@ const SignLanguageCourses = () => {
         h1 {
           text-align: center;
           color: #333;
-          margin-bottom: 30px;
+          margin-bottom: 25px;
         }
 
         .tabs {
@@ -287,6 +309,15 @@ const SignLanguageCourses = () => {
         .filter-dropdown {
           min-width: 150px;
         }
+
+        .img{
+        height: 180;
+        width: 300;
+        objectFit: 'cover';
+        marginBottom: '1rem';
+        borderRadius: '4px';
+        }
+
       `}</style>
     </div>
   );
