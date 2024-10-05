@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-mongoose.connect('mongodb+srv://navyabijoy14:navyabijoy14@unify.veaed.mongodb.net/unify-hacksummit?retryWrites=true&w=majority&appName=unify')
+mongoose.connect('mongodb+srv://navyabijoy:navyabijoy@cluster0.pzcog.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => {
     console.log('Connected to MongoDB');
   })
