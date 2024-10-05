@@ -48,7 +48,7 @@ function SideBar() {
             id:5,
             name:'Community',
             icon:<HiOutlineChatBubbleLeftRight />,
-            path:'/dashboard/community'
+            path:'/dashboard/forum'
 
         },
         {
@@ -68,7 +68,7 @@ function SideBar() {
 
             <ul>
                 {Menu.map((item, index) => (
-                    <li key={index} className={`flex items-center gap-2 text-blue-900 p-3 cursor-pointer hover:bg-gray-100 hover:text-black rounded-lg ${item.path === path && 'bg-gray-100 text-black'}`}>
+                    <li key={index} className={`flex items-center gap-2 text-blue-900 p-3 cursor-pointer hover:bg-gray-100 hover:text-black rounded-lg mb-2 ${item.path === path && 'bg-gray-100 text-black'}`}>
                     <Link href={item.path} className="flex items-center gap-2 w-full">
                         <div className='text-4xl'>{item.icon}</div>
                         <h2>{item.name}</h2>

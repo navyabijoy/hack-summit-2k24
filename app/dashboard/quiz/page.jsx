@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const questions = [
   { question: "1. What is the sign for 'Thank You'?", options: ["A hand to the chin, then outward", "Thumbs-up", "Waving both hands"], correct: 0, difficulty: 'easy' },
