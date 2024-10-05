@@ -71,7 +71,7 @@ function SideBar() {
     const path=usePathname()
     return (
         <div className="fixed h-full md:w-64 p-5 shadow-md"> 
-            <Image src={'/assests/full-unify.png'} width={80} height={80} padding={8}/>
+            <Image src={'/assests/Unify.png'} width={150} height={150}/>
             <hr className='my-5' />
 
             <ul>

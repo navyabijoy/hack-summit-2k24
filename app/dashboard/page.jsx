@@ -51,28 +51,26 @@ const Dashboard = () => {
       <Greeting />
 
       <div className="dashboard-section">
-        <h2>Your Courses</h2>
-        {userCourses.length > 0 ? (
-          <ul className="course-list">
-            {userCourses.map((course) => (
-              <li key={course.id} className="course-item">
-                      
-                      
-                 <img src={course.thumbnailUrl} alt="YouTube Video Thumbnail" />
-
-                <h3 className='course-title'>{course.title}</h3>
-                <p className="course-description">{course.description}</p>
-                <p className="course-duration">Duration: {course.duration}</p>
-              </li>
-            ))}
-          </ul>
-          
-        ) : (
-          <p>No courses found. Start learning today!</p>
-        )}
+  <h2 className="section-title">Your Courses</h2>
+  {userCourses.length > 0 ? (
+    <ul className="course-list">
+      {userCourses.map((course) => (
+        <li key={course.id} className="course-item">
+          <img src={course.thumbnailUrl} alt={course.title} className="course-thumbnail" />
+          <div className="course-info">
+            <h3 className="course-title">{course.title}</h3>
+            <p className="course-description">{course.description}</p>
+            <p className="course-duration">Duration: {course.duration}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p className="no-courses">No courses found. Start learning today!</p>
+  )}
       </div>
 
-      <div className="dashboard-section">
+      {/* <div className="dashboard-section">
         <h2>Your Quizzes</h2>
         {userQuizzes.length > 0 ? (
           <ul className="quiz-list">
@@ -86,7 +84,7 @@ const Dashboard = () => {
         ) : (
           <p>No quizzes taken yet. Test your knowledge!</p>
         )}
-      </div>
+      </div> */}
 
       {/* <div className="dashboard-section">
         <h2>Available Courses</h2>
@@ -109,55 +107,64 @@ const Dashboard = () => {
           color: #1c53a3;
           margin-bottom: 20px;
         }
-        .dashboard-section {
-          margin-bottom: 30px;
-        }
-        .dashboard-section h2 {
-          font-size: 20px;
-          color: #333;
-          margin-bottom: 15px;
-        }
-        .course-list, .quiz-list {
-          list-style-type: none;
-          padding: 0;
-        }
-          .course-title {
-          font-size: 20px;
-          margin-bottom: 10px;
-          color: #333;
-        }
-
-        .course-description {
-          color: #666;
-          margin-bottom: 15px;
-          flex-grow: 1;
-        }
-
-        .course-duration {
-          color: #888;
-          font-size: 14px;
-          margin-bottom: 15px;
-        }
-        .course-item, .quiz-item {
-          background-color: #f5f5f5;
-          border-radius: 4px;
-          padding: 10px;
-          margin-bottom: 10px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        .progress-bar {
-          width: 100px;
-          height: 10px;
-          background-color: #e0e0e0;
-          border-radius: 5px;
-          overflow: hidden;
-        }
-        .progress {
-          height: 100%;
-          background-color: #1c53a3;
-        }
+          .dashboard-section {
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .course-list {
+      list-style-type: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .course-item {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .course-item:hover {
+      transform: translateY(-5px);
+    }
+    .course-thumbnail {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .course-info {
+      padding: 15px;
+    }
+    .course-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .course-description {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .course-duration {
+      color: #888;
+      font-size: 12px;
+    }
+    .no-courses {
+      color: #666;
+      font-style: italic;
+    }
+        
       `}</style>
     </div>
   );

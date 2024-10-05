@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   <div className="flex justify-between h-16">
     <div className="flex items-center">
-      <img src="/assests/full-unify.png" alt="Logo" className="h-20 w-14 pt-2" />
+      <img src="/assests/Unify.png" alt="Logo" className="h-20 w-14 pt-2" />
     </div>
  
           <div className="hidden sm:ml-6 sm:flex sm:items-center">

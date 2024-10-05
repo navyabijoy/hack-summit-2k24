@@ -5,7 +5,7 @@ import { UserButton } from '@clerk/nextjs'
 function Header() {
     return (
         <div className='flex justify-between items-center p-5 shadow-sm'>
-            <Image src={'/assests/short-unify.png'} width={40} height={40} />
+            <Image src={'/assests/short-Unify.png'} width={40} height={40} />
             <UserButton/>
         </div>
     )
