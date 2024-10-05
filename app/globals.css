@@ -15,33 +15,42 @@
   transform: rotateY(180deg);
 }
 
-
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.tab-button {
+  @apply px-6 py-3 border-none bg-gray-200 cursor-pointer text-base transition-colors duration-300 rounded-md min-w-[120px];
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.tab-button:hover {
+  @apply bg-gray-300;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.tab-button.active {
+  @apply bg-blue-600 text-white;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-} */
+.course-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.course-card {
+  @apply bg-white rounded-lg shadow-md p-6 h-full flex flex-col;
+}
+
+.course-title {
+  @apply text-xl font-semibold mb-3 text-gray-800;
+}
+
+.course-description {
+  @apply text-gray-600 mb-4 flex-grow;
+}
+
+.course-duration {
+  @apply text-gray-500 text-sm mb-4;
+}
+
+.watch-button {
+  @apply inline-block px-4 py-2 bg-blue-600 text-white no-underline rounded transition-colors duration-300 text-center;
+}
+
+.watch-button:hover {
+  @apply bg-blue-700;
+}
