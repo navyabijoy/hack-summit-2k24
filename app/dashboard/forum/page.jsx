@@ -1,36 +1,61 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useUser } from '@clerk/nextjs';
 
 function Forum() {
-    const [posts, setPosts] = useState([
-        { id: 1, title: "Welcome to our community!", content: "This is a safe space for all.", author: "Admin", likes: 5, category: "Announcements", isPinned: true, comments: [] },
-        { id: 2, title: "Sign language resources", content: "Share your favorite ASL learning materials here.", author: "SignLover", likes: 3, category: "Resources", comments: [] },
-    ]);
+    const { user } = useUser();
+    const [posts, setPosts] = useState([]);
     const [newPost, setNewPost] = useState({ title: '', content: '', category: '' });
-    const [searchTerm] = useState('');
-    const [selectedCategory] = useState('All');
-    // const [showPoll, setShowPoll] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('All');
 
     const categories = ["Announcements", "Resources", "Q&A", "General Discussion"];
 
-    const handleSubmit = (e) => {
+    useEffect(() => {
+        fetchPosts();
+    }, []);
+
+    const fetchPosts = async () => {
+        const response = await fetch('/api/forum');
+        const data = await response.json();
+        setPosts(data);
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (newPost.title && newPost.content) {
-            setPosts([...posts, { ...newPost, id: posts.length + 1, author: "User", likes: 0, comments: [] }]);
-            setNewPost({ title: '', content: '', category: '' });
+        if (newPost.title && newPost.content && newPost.category) {
+            const response = await fetch('/api/forum', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...newPost, author: user.username }),
+            });
+            if (response.ok) {
+                fetchPosts();
+                setNewPost({ title: '', content: '', category: '' });
+            }
         }
     };
 
-    const handleLike = (id) => {
-        setPosts(posts.map(post => 
-            post.id === id ? { ...post, likes: post.likes + 1 } : post
-        ));
+    const handleLike = async (id) => {
+        const response = await fetch('/api/forum', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id, action: 'like' }),
+        });
+        if (response.ok) {
+            fetchPosts();
+        }
     };
 
-    const handleComment = (id, comment) => {
-        setPosts(posts.map(post =>
-            post.id === id ? { ...post, comments: [...post.comments, { author: "User", content: comment }] } : post
-        ));
+    const handleComment = async (id, comment) => {
+        const response = await fetch('/api/forum', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id, action: 'comment', data: { author: user.username, content: comment } }),
+        });
+        if (response.ok) {
+            fetchPosts();
+        }
     };
 
     const filteredPosts = posts
@@ -68,7 +93,7 @@ function Forum() {
                 <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Submit Post</button>
             </form>
 
-            {/* <div className="mb-4">
+            <div className="mb-4">
                 <input 
                     type="text" 
                     placeholder="Search posts..." 
@@ -91,34 +116,15 @@ function Forum() {
                 </select>
             </div>
 
-            <button onClick={() => setShowPoll(!showPoll)} className="bg-indigo-500 text-white px-4 py-2 rounded mb-4">
-                Toggle Poll
-            </button> */}
-
-            {/* {showPoll && (
-                <div className="bg-indigo-100 p-4 mb-4 rounded">
-                    <h3 className="font-bold">Poll: Favorite ASL Learning Method</h3>
-                    <div>
-                        <label className="block"><input type="radio" name="poll" /> Video Tutorials</label>
-                        <label className="block"><input type="radio" name="poll" /> In-person Classes</label>
-                        <label className="block"><input type="radio" name="poll" /> Mobile Apps</label>
-                        <label className="block"><input type="radio" name="poll" /> Books and Flashcards</label>
-                    </div>
-                    <button className="bg-indigo-500 text-white px-2 py-1 rounded mt-2">Submit Vote</button>
-                </div>
-            )} */}
-
             <div>
                 {filteredPosts.map(post => (
-                    <div key={post.id} className={`bg-gray-100 p-4 mb-4 rounded ${post.isPinned ? 'border-2 border-red-500' : ''}`}>
+                    <div key={post._id} className={`bg-gray-100 p-4 mb-4 rounded ${post.isPinned ? 'border-2 border-red-500' : ''}`}>
                         <h2 className="text-xl font-bold">{post.title} {post.isPinned && <span className="text-red-500">(Pinned)</span>}</h2>
                         <p className="mb-2">{post.content}</p>
                         <p className="text-sm text-gray-600">Posted by: {post.author} | Category: {post.category}</p>
-                        <button onClick={() => handleLike(post.id)} className="text-blue-500 mr-2">
+                        <button onClick={() => handleLike(post._id)} className="text-blue-500 mr-2">
                             Like ({post.likes})
                         </button>
-                        <button className="text-green-500 mr-2">😊</button>
-                        <button className="text-yellow-500 mr-2">👍</button>
                         <div className="mt-2">
                             <strong>Comments:</strong>
                             {post.comments.map((comment, index) => (
@@ -127,7 +133,7 @@ function Forum() {
                             <input 
                                 type="text" 
                                 placeholder="Add a comment" 
-                                onKeyPress={(e) => e.key === 'Enter' && handleComment(post.id, e.target.value)}
+                                onKeyPress={(e) => e.key === 'Enter' && handleComment(post._id, e.target.value)}
                                 className="w-full p-1 mt-1 border rounded"
                             />
                         </div>

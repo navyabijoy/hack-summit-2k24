@@ -135,17 +135,30 @@ const SignLanguageCourses = () => {
 
   return (
     <div className="container">
-      <h1 className='text-2xl'>Sign Language Courses</h1>
+            <div className="max-w-6xl mx-auto flex-grow p-6">
+            <header className="text-center mb-8">
+
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">
+            Sign Language Courses
+          </h1>
+          <p className="text-gray-600">
+            Learn essential sign language gestures for everyday communication
+          </p>
+        </header>
 
       <div className="search-filter-container">
-        <input
-          type="text"
-          id="searchBar"
-          className="search-bar"
-          placeholder="Search courses..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+      <div className="max-w-md mx-auto">
+
+      <input
+              type="text"
+              placeholder="Search signs..."
+              className="w-full p-3 rounded-lg border border-gray-300 shadow-sm
+                       focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+                      </div>
+
         <select
           id="filterDropdown"
           className="filter-dropdown"
@@ -256,16 +269,21 @@ const SignLanguageCourses = () => {
         }
 
         .course-title {
-          font-size: 20px;
-          margin-bottom: 10px;
-          color: #333;
-        }
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
 
         .course-description {
-          color: #666;
-          margin-bottom: 15px;
-          flex-grow: 1;
-        }
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
 
         .course-duration {
           color: #888;
@@ -319,6 +337,7 @@ const SignLanguageCourses = () => {
         }
 
       `}</style>
+      </div>
     </div>
   );
 };

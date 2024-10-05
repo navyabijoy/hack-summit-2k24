@@ -77,7 +77,6 @@ const SignLanguageDictionary = () => {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <div className="max-w-6xl mx-auto flex-grow p-6">
-        {/* Header */}
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">
             Sign Language Dictionary
@@ -87,7 +86,6 @@ const SignLanguageDictionary = () => {
           </p>
         </header>
 
-        {/* Search and Filters */}
         <div className="mb-8 space-y-4">
           <div className="max-w-md mx-auto">
             <input

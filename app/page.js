@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-// import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Head from "next/head";
-// import { Analytics } from "@vercel/analytics/react"
+import Chat from '@/components/Chat'
+
 import {
   Grid,
   Container,
@@ -12,11 +12,8 @@ import {
   useTheme,
 } from "@mui/material";
 import Navbar from "./components/Navbar/Navbar";
-// import Footer from "./components/Footer/Footer";
 import HeroSection from "./components/HeroSection/HeroSection";
-// import TwitterIcon from '@mui/icons-material/Twitter';
-// import LinkedInIcon from '@mui/icons-material/LinkedIn';
-// import MailIcon from '@mui/icons-material/Mail';
+
 
 export default function Home() {
   const theme = useTheme();
@@ -46,7 +43,9 @@ export default function Home() {
       </Head>
       <Navbar />
       <HeroSection />
-
+      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <Chat />
+    </main>
       <Box
       sx={{
         my: { xs: 4, md: 8 },
@@ -77,7 +76,7 @@ export default function Home() {
           {
             title: "User-Friendly Interface",
             description: "Intuitive design that simplifies navigation, making it easy for all users to access resources and learn.",
-            image: "/assets/user_interface.png",
+            image: "/assests/user-friendly.png",
           },
           {
             title: "Comprehensive Sign Language Courses",
@@ -87,22 +86,22 @@ export default function Home() {
           {
             title: "Interactive Quizzes for Reinforcement",
             description: "Engaging quizzes provide immediate feedback, reinforcing learning and improving sign language skills.",
-            image: "/assets/quizzes.png",
+            image: "/assets/quiz.png",
           },
           {
             title: "Real-Time Gesture Interpretation",
             description: "Converts sign language gestures into text, enhancing communication for users and the hearing community.",
-            image: "/assets/gesture_interpretation.png",
+            image: "/assets/sign.png",
           },
           {
             title: "Supportive Community Forum",
             description: "Connect and engage with others through a vibrant community forum, fostering inclusivity and support.",
-            image: "/assets/community_forum.png",
+            image: "/assets/community.png",
           },
           {
             title: "Multilingual Support and Dictionary",
             description: "Sign language dictionary and multilingual resources ensure accessibility for diverse users.",
-            image: "/assets/multilingual_support.png",
+            image: "/assets/dictionary.png",
           }
           
         ].map((feature, index) => (
