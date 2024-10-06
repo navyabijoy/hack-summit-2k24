@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Head from "next/head";
+import Chat from '@/components/Chat'
 
 import {
   Grid,
@@ -42,9 +43,9 @@ export default function Home() {
       </Head>
       <Navbar />
       <HeroSection />
-      {/* <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Chat />
-    </main> */}
+    </main>
       <Box
       sx={{
         my: { xs: 4, md: 8 },
