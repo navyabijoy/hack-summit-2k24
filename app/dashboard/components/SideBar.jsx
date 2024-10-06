@@ -9,10 +9,7 @@ import { HiOutlineSquare3Stack3D } from "react-icons/hi2";
 import { HiOutlinePlay } from "react-icons/hi2";
 import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
 import { HiOutlineTranslate } from "react-icons/hi";
-import { HiMiniArrowLeftStartOnRectangle } from "react-icons/hi2";
 import { usePathname } from 'next/navigation';
-
-
 
 
 function SideBar() {
@@ -59,13 +56,7 @@ function SideBar() {
             path:'/dashboard/dictionary'
 
         },
-        {
-            id:7,
-            name:'Logout',
-            icon:<HiMiniArrowLeftStartOnRectangle />,
-            path:'/dashboard/community'
-
-        },
+       
     ]
 
     const path=usePathname()

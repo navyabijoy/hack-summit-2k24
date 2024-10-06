@@ -15,12 +15,13 @@ const HeroSection = () => {
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <a
-              className="block w-full rounded bg-blue-800 px-12 py-3 text-sm font-medium text-white shadow-lg hover:bg-blue-700 transition duration-300 focus:outline-none focus:ring active:bg-blue-800 sm:w-auto"
-              href="#"
-            >
-              Get Started
-            </a>
+          <a
+  className="block w-full rounded bg-blue-800 px-12 py-3 text-sm font-medium text-white shadow-lg hover:bg-blue-700 transition duration-300 focus:outline-none focus:ring active:bg-blue-800 sm:w-auto"
+  href="/sign-in?redirectUrl=/dashboard"
+>
+  Get Started
+</a>
+
 
             <a
               className="block w-full rounded px-12 py-3 text-sm font-medium text-blue-800 border border-blue-800 shadow hover:bg-blue-800 hover:text-white transition duration-300 focus:outline-none focus:ring active:bg-blue-700 sm:w-auto"

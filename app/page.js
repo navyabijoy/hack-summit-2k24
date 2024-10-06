@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Head from "next/head";
-import Chat from '@/components/Chat'
 
 import {
   Grid,
@@ -43,9 +42,9 @@ export default function Home() {
       </Head>
       <Navbar />
       <HeroSection />
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      {/* <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Chat />
-    </main>
+    </main> */}
       <Box
       sx={{
         my: { xs: 4, md: 8 },
@@ -81,27 +80,27 @@ export default function Home() {
           {
             title: "Comprehensive Sign Language Courses",
             description: "Structured courses from quality YouTube videos, organized by levels for effective learning.",
-            image: "/assets/courses.png",
+            image: "/assests/courses.png",
           },
           {
             title: "Interactive Quizzes for Reinforcement",
             description: "Engaging quizzes provide immediate feedback, reinforcing learning and improving sign language skills.",
-            image: "/assets/quiz.png",
+            image: "/assests/quiz.png",
           },
           {
             title: "Real-Time Gesture Interpretation",
             description: "Converts sign language gestures into text, enhancing communication for users and the hearing community.",
-            image: "/assets/sign.png",
+            image: "/assests/sign.png",
           },
           {
             title: "Supportive Community Forum",
             description: "Connect and engage with others through a vibrant community forum, fostering inclusivity and support.",
-            image: "/assets/community.png",
+            image: "/assests/community.png",
           },
           {
             title: "Multilingual Support and Dictionary",
             description: "Sign language dictionary and multilingual resources ensure accessibility for diverse users.",
-            image: "/assets/dictionary.png",
+            image: "/assests/dictionary.png",
           }
           
         ].map((feature, index) => (
@@ -109,7 +108,7 @@ export default function Home() {
             <Box
               sx={{
                 display: 'flex',
-                height: '340px',
+                height: '430px',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -182,7 +181,7 @@ export default function Home() {
               fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem", lg: "3.5rem" },
             }}
           >
-            *more info about website*
+            Interactive Learning Experience
           </Typography>
         </Box>
         <Typography

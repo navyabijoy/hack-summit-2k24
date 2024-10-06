@@ -61,6 +61,8 @@ const Dashboard = () => {
             <h3 className="course-title">{course.title}</h3>
             <p className="course-description">{course.description}</p>
             <p className="course-duration">Duration: {course.duration}</p>
+            {/* <p className="course-link">Continue: {course.url}</p> */}
+
           </div>
         </li>
       ))}
